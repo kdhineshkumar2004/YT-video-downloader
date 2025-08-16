@@ -1,0 +1,34 @@
+/* static/css/style.css */
+body { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+.loader {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: conic-gradient(#8b5cf6 0 30%, rgba(255,255,255,0.06) 30% 100%);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: spin 1s linear infinite;
+  margin: 12px auto;
+}
+@keyframes spin { to { transform: rotate(1turn); } }
+
+/* Step 2 animations */
+#step2-download { transform: translateY(12px); opacity: 0; transition: all 350ms ease; }
+#step2-download.visible { transform: translateY(0); opacity: 1; }
+.hidden { display: none !important; }
+
+/* error box */
+.alert-error {
+  background: rgba(220,38,38,0.07);
+  color: #fecaca;
+  border: 1px solid rgba(220,38,38,0.12);
+  padding: 12px;
+  border-radius: 8px;
+}
+.alert-info {
+  background: rgba(99,102,241,0.06);
+  color: #c7d2fe;
+  border: 1px solid rgba(99,102,241,0.12);
+  padding: 12px;
+  border-radius: 8px;
+}

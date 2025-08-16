@@ -1,0 +1,58 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YT Downloader Pro</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --glass: rgba(255,255,255,0.04); }
+    html,body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 min-h-screen flex items-center justify-center p-6 text-white">
+  <div class="w-full max-w-3xl">
+    <header class="text-center mb-6">
+      <h1 class="text-4xl font-extrabold">YT Downloader Pro</h1>
+      <p class="text-slate-400 mt-2">Fetch formats and download a specific resolution (or let server merge for you).</p>
+    </header>
+
+    <div id="step1-url" class="bg-[var(--glass)] border border-slate-700 rounded-2xl p-6 shadow-lg">
+      <form id="url-form" class="space-y-4">
+        <label class="block text-sm text-slate-300">YouTube URL</label>
+        <input id="youtube-url" type="url" required placeholder="https://www.youtube.com/watch?v=..." class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 placeholder-slate-500" />
+        <div class="grid grid-cols-2 gap-3">
+          <button id="fetch-btn" type="submit" class="bg-indigo-600 hover:bg-indigo-700 py-3 rounded-lg font-semibold">Fetch Formats</button>
+          <button id="clear-btn" type="button" class="bg-slate-600 hover:bg-slate-500 py-3 rounded-lg">Clear</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="status-area" class="mt-5 min-h-[60px]"></div>
+
+    <!-- Step 2 (hidden initially) -->
+    <div id="step2-download" class="hidden mt-6 transition-all duration-400">
+      <div class="flex flex-col sm:flex-row gap-4 bg-[var(--glass)] border border-slate-700 p-4 rounded-lg items-center">
+        <img id="video-thumbnail" src="" alt="thumb" class="w-40 h-24 object-cover rounded-md shadow-md" />
+        <div class="flex-1 w-full">
+          <div id="video-title" class="font-semibold text-lg text-slate-100 mb-3">Title</div>
+          <form id="download-form" class="space-y-3">
+            <select id="format-select" class="w-full rounded-md bg-slate-800 border border-slate-700 p-3"></select>
+            <div class="flex gap-3">
+              <button id="download-btn" class="flex-1 bg-green-600 hover:bg-green-700 py-2 rounded-md font-semibold">Download</button>
+              <button id="open-btn" type="button" class="bg-slate-600 hover:bg-slate-500 py-2 px-4 rounded-md">Open in new tab</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center text-slate-400 mt-6 text-sm">Powered by <strong>yt-dlp</strong> • Run locally</footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
